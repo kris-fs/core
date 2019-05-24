@@ -140,7 +140,8 @@ const DateTimePicker = (($, moment) => {
         buttons: {
             showToday: false,
             showClear: false,
-            showClose: false
+            showClose: false,
+            showUpDown: true
         },
         widgetPositioning: {
             horizontal: 'auto',
@@ -1278,6 +1279,9 @@ const DateTimePicker = (($, moment) => {
             }
             if (typeof this._options.buttons.showClose !== 'boolean') {
                 throw new TypeError('buttons.showClose expects a boolean parameter');
+            }
+            if (typeof this._options.buttons.showUpDown !== 'boolean') {
+                throw new TypeError('buttons.showUpDown expects a boolean parameter');
             }
 
             if (this.widget) {

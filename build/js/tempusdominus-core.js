@@ -141,7 +141,8 @@ var DateTimePicker = function ($, moment) {
         buttons: {
             showToday: false,
             showClear: false,
-            showClose: false
+            showClose: false,
+            showUpDown: true
         },
         widgetPositioning: {
             horizontal: 'auto',
@@ -526,7 +527,7 @@ var DateTimePicker = function ($, moment) {
         };
 
         DateTimePicker.prototype._notifyEvent = function _notifyEvent(e) {
-            if (e.type === DateTimePicker.Event.CHANGE && (e.date && e.date.isSame(e.oldDate)) || !e.date && !e.oldDate) {
+            if (e.type === DateTimePicker.Event.CHANGE && e.date && e.date.isSame(e.oldDate) || !e.date && !e.oldDate) {
                 return;
             }
             this._element.trigger(e);
@@ -1237,6 +1238,9 @@ var DateTimePicker = function ($, moment) {
             }
             if (typeof this._options.buttons.showClose !== 'boolean') {
                 throw new TypeError('buttons.showClose expects a boolean parameter');
+            }
+            if (typeof this._options.buttons.showUpDown !== 'boolean') {
+                throw new TypeError('buttons.showUpDown expects a boolean parameter');
             }
 
             if (this.widget) {
